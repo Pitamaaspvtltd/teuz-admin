@@ -18,8 +18,8 @@ import ProductList from "./pages/ProductList.jsx"
 const CategoryList = lazy(() => import("./pages/CategoryList"))
 const CategoryDetails = lazy(() => import("./pages/CategoryDetails"))
 
-// export const domainurl = "https://teuzbackend.onrender.com"
-export const domainurl = "http://localhost:5000"
+export const domainurl = "https://teuzbackend.onrender.com"
+// export const domainurl = "http://localhost:5000"
 
 const App = () => {
 	const navigate = useNavigate()
