@@ -4,6 +4,7 @@ import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { assets } from "../assets/assets"
 import Loader from "../components/Loader"
+import { domainurl } from "../App"
 
 const AddProducts = () => {
 	const [name, setName] = useState("")
@@ -18,7 +19,7 @@ const AddProducts = () => {
 
 	useEffect(() => {
 		axios
-			.get("http://localhost:5000/api/categories")
+			.get(`${domainurl}/api/categories`)
 			.then((response) => {
 				setCategories(response.data.categories)
 				console.log("Categories fetched:", response.data.categories)
@@ -29,7 +30,7 @@ const AddProducts = () => {
 	useEffect(() => {
 		if (category) {
 			axios
-				.get(`http://localhost:5000/api/products/category/${category}`)
+				.get(`${domainurl}/api/products/category/${category}`)
 				.then((response) => {
 					if (response.data.subcategories.length > 0) {
 						setSubcategories(response.data.subcategories)
@@ -74,15 +75,11 @@ const AddProducts = () => {
 		})
 		setLoading(true)
 		try {
-			const response = await axios.post(
-				"http://localhost:5000/api/products",
-				formData,
-				{
-					headers: {
-						"Content-Type": "multipart/form-data",
-					},
-				}
-			)
+			const response = await axios.post(`${domainurl}/api/products`, formData, {
+				headers: {
+					"Content-Type": "multipart/form-data",
+				},
+			})
 
 			toast.success("Product added successfully")
 			console.log("Product added:", response.data)

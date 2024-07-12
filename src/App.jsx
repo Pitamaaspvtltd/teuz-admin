@@ -17,7 +17,7 @@ import ErrorBoundary from "./components/ErrorBoundary.jsx"
 const CategoryList = lazy(() => import("./pages/CategoryList"))
 const CategoryDetails = lazy(() => import("./pages/CategoryDetails"))
 
-export const url = "http://localhost:5000"
+export const domainurl = "https://teuzbackend.onrender.com"
 
 const App = () => {
 	const navigate = useNavigate()

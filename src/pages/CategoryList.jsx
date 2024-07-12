@@ -79,6 +79,7 @@ import "react-toastify/dist/ReactToastify.css"
 import { AiOutlineDelete } from "react-icons/ai"
 import { FaRegEdit, FaSave } from "react-icons/fa"
 import { useNavigate } from "react-router-dom"
+import { domainurl } from "../App"
 
 const CategoryList = () => {
 	const [categories, setCategories] = useState([])
@@ -87,7 +88,7 @@ const CategoryList = () => {
 
 	useEffect(() => {
 		axios
-			.get("http://localhost:5000/api/categories")
+			.get(`${domainurl}/api/categories`)
 			.then((response) => {
 				setCategories(response.data.categories)
 			})
@@ -99,7 +100,7 @@ const CategoryList = () => {
 	const handleDelete = (id) => {
 		if (window.confirm("Are you sure you want to delete this category?")) {
 			axios
-				.delete(`http://localhost:5000/api/categories/${id}`)
+				.delete(`${domainurl}/api/categories/${id}`)
 				.then((response) => {
 					toast.success("Category deleted successfully")
 					setCategories(categories.filter((category) => category._id !== id))
@@ -117,7 +118,7 @@ const CategoryList = () => {
 
 	const handleSave = (id) => {
 		axios
-			.put(`http://localhost:5000/api/categories/${id}`, {
+			.put(`${domainurl}/api/categories/${id}`, {
 				name: editingCategoryName,
 			})
 			.then((response) => {
@@ -175,12 +176,12 @@ const CategoryList = () => {
 									{category.name}
 								</span>
 								<div className="space-x-4">
-									<button
+									{/* <button
 										onClick={() => handleEdit(category._id, category.name)}
 										className="text-blue-500 text-xl"
 									>
 										<FaRegEdit />
-									</button>
+									</button> */}
 									<button
 										onClick={() => handleDelete(category._id)}
 										className="text-red-500 text-2xl"

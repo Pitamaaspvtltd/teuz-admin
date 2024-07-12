@@ -166,6 +166,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import axios from "axios"
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import { domainurl } from "../App"
 
 const CategoryDetails = ({ back }) => {
 	const { id } = useParams()
@@ -181,7 +182,7 @@ const CategoryDetails = ({ back }) => {
 
 	useEffect(() => {
 		axios
-			.get(`http://localhost:5000/api/products/category/${id}`)
+			.get(`${domainurl}/api/products/category/${id}`)
 			.then((response) => {
 				setCategory(response.data)
 				setLoading(false)
@@ -198,7 +199,7 @@ const CategoryDetails = ({ back }) => {
 				const subcategoriesWithProducts = await Promise.all(
 					category.subcategories.map(async (subcategory) => {
 						const response = await axios.get(
-							`http://localhost:5000/api/products/subcategory/${subcategory._id}`
+							`${domainurl}/api/products/subcategory/${subcategory._id}`
 						)
 						return {
 							...subcategory,
@@ -215,7 +216,7 @@ const CategoryDetails = ({ back }) => {
 	const handleDeleteSubcategory = (subcategoryId) => {
 		if (window.confirm("Are you sure you want to delete this subcategory?")) {
 			axios
-				.delete(`http://localhost:5000/api/subcategories/${subcategoryId}`)
+				.delete(`${domainurl}/api/subcategories/${subcategoryId}`)
 				.then((response) => {
 					toast.success("Subcategory deleted successfully")
 					setSubcategories(
@@ -231,7 +232,7 @@ const CategoryDetails = ({ back }) => {
 	const handleDeleteProduct = (productId) => {
 		if (window.confirm("Are you sure you want to delete this product?")) {
 			axios
-				.delete(`http://localhost:5000/api/products/${productId}`)
+				.delete(`${domainurl}/api/products/${productId}`)
 				.then((response) => {
 					toast.success("Product deleted successfully")
 					setSubcategories(

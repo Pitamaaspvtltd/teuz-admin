@@ -78,6 +78,7 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { toast } from "react-toastify"
 import { useNavigate } from "react-router-dom"
+import { domainurl } from "../App"
 
 const AddCategoryAndSubcategory = () => {
 	const [categoryName, setCategoryName] = useState("")
@@ -89,7 +90,7 @@ const AddCategoryAndSubcategory = () => {
 	useEffect(() => {
 		const fetchCategories = async () => {
 			try {
-				const response = await axios.get("http://localhost:5000/api/categories")
+				const response = await axios.get(`${domainurl}/api/categories`)
 				setCategories(response.data.categories)
 			} catch (error) {
 				toast.error("Failed to fetch categories", { autoClose: 3000 })
@@ -104,7 +105,7 @@ const AddCategoryAndSubcategory = () => {
 
 		try {
 			const response = await axios.post(
-				"http://localhost:5000/api/categories",
+				`${domainurl}/api/categories`,
 				{ name: categoryName },
 				{
 					withCredentials: true,
@@ -131,7 +132,7 @@ const AddCategoryAndSubcategory = () => {
 
 		try {
 			const response = await axios.post(
-				"http://localhost:5000/api/subcategories",
+				`${domainurl}/api/subcategories`,
 				{ name: subcategoryName, category },
 				{
 					withCredentials: true,

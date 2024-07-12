@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import axios from "axios"
 import "./login.css"
+import { domainurl } from "../../App"
 
 const Login = ({ setAuthenticated, url }) => {
 	const [email, setEmail] = useState("")
@@ -12,13 +13,10 @@ const Login = ({ setAuthenticated, url }) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		try {
-			const response = await axios.post(
-				`http://localhost:5000/api/users/login`,
-				{
-					email,
-					password,
-				}
-			)
+			const response = await axios.post(`${domainurl}/api/users/login`, {
+				email,
+				password,
+			})
 			if (response.data.success) {
 				// Save token to localStorage
 				localStorage.setItem("token", response.data.token)
