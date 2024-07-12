@@ -176,12 +176,12 @@ const CategoryList = () => {
 									{category.name}
 								</span>
 								<div className="space-x-4">
-									{/* <button
+									<button
 										onClick={() => handleEdit(category._id, category.name)}
 										className="text-blue-500 text-xl"
 									>
 										<FaRegEdit />
-									</button> */}
+									</button>
 									<button
 										onClick={() => handleDelete(category._id)}
 										className="text-red-500 text-2xl"

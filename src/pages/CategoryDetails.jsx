@@ -299,12 +299,12 @@ const CategoryDetails = ({ back }) => {
 											<span className="ml-4">{product.name}</span>
 										</div>
 										<div className="space-x-2">
-											<button
+											{/* <button
 												onClick={() => handleEditProduct(product._id)}
 												className="text-blue-500"
 											>
 												Edit
-											</button>
+											</button> */}
 											<button
 												onClick={() => handleDeleteProduct(product._id)}
 												className="text-red-500"
