@@ -73,7 +73,6 @@
 // }
 
 // export default AddCategory
-
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { toast } from "react-toastify"
@@ -104,16 +103,9 @@ const AddCategoryAndSubcategory = () => {
 		e.preventDefault()
 
 		try {
-			const response = await axios.post(
-				`${domainurl}/api/categories`,
-				{ name: categoryName },
-				{
-					withCredentials: true,
-					headers: {
-						Authorization: `Bearer ${localStorage.getItem("token")}`,
-					},
-				}
-			)
+			const response = await axios.post(`${domainurl}/api/categories`, {
+				name: categoryName,
+			})
 			toast.success(
 				`Category ${response.data.category.name} created successfully!`,
 				{ autoClose: 3000 }
@@ -131,16 +123,10 @@ const AddCategoryAndSubcategory = () => {
 		e.preventDefault()
 
 		try {
-			const response = await axios.post(
-				`${domainurl}/api/subcategories`,
-				{ name: subcategoryName, category },
-				{
-					withCredentials: true,
-					headers: {
-						Authorization: `Bearer ${localStorage.getItem("token")}`,
-					},
-				}
-			)
+			const response = await axios.post(`${domainurl}/api/subcategories`, {
+				name: subcategoryName,
+				category,
+			})
 			toast.success(
 				`Subcategory ${response.data.subcategory.name} created successfully!`,
 				{ autoClose: 3000 }

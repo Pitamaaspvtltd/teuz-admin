@@ -3,7 +3,6 @@ import axios from "axios"
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { assets } from "../assets/assets"
-import Loader from "../components/Loader"
 import { domainurl } from "../App"
 
 const AddProducts = () => {
