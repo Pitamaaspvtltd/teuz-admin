@@ -13,11 +13,13 @@ import LoadingSpinner from "./components/LoadingSpinner.jsx" // Assuming you hav
 import ProductUpdate from "./pages/ProductUpdate.jsx"
 import Login from "./components/Login/Login.jsx"
 import ErrorBoundary from "./components/ErrorBoundary.jsx"
+import ProductList from "./pages/ProductList.jsx"
 
 const CategoryList = lazy(() => import("./pages/CategoryList"))
 const CategoryDetails = lazy(() => import("./pages/CategoryDetails"))
 
-export const domainurl = "https://teuzbackend.onrender.com"
+// export const domainurl = "https://teuzbackend.onrender.com"
+export const domainurl = "http://localhost:5000"
 
 const App = () => {
 	const navigate = useNavigate()
@@ -82,6 +84,10 @@ const App = () => {
 									<Route
 										path="/product/update/:id"
 										element={<PrivateRoute element={<ProductUpdate />} />}
+									/>{" "}
+									<Route
+										path="/all-product"
+										element={<PrivateRoute element={<ProductList />} />}
 									/>
 									<Route
 										path="/"

@@ -24,7 +24,7 @@ const Sidebar = () => {
 						className="w-5"
 						alt=""
 					/>
-					<p className="hidden sm:block">Add Product</p>
+					<p className="hidden sm:block">Add Category</p>
 				</NavLink>
 				<NavLink
 					to={"/list-song"}
@@ -35,10 +35,10 @@ const Sidebar = () => {
 						className="w-5"
 						alt=""
 					/>
-					<p className="hidden sm:block">Add SubCategory</p>
+					<p className="hidden sm:block">Add Product</p>
 				</NavLink>
 				<NavLink
-					to={"/add-album"}
+					to={"/all-product"}
 					className="flex items-center gap-2.5 text-gray-800 bg-white border border-black p-2 pr-[max(8vw,10px)] drop-shadow-[-4px_4px_#00ff58] text-sm font-medium"
 				>
 					<img
@@ -46,7 +46,7 @@ const Sidebar = () => {
 						className="w-5"
 						alt=""
 					/>
-					<p className="hidden sm:block">List Product</p>
+					<p className="hidden sm:block">All Product</p>
 				</NavLink>
 				{/* <NavLink
 					to={"/list-album"}

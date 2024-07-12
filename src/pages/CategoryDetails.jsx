@@ -167,6 +167,8 @@ import axios from "axios"
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { domainurl } from "../App"
+import { AiOutlineDelete } from "react-icons/ai"
+import { FaRegEdit, FaSave } from "react-icons/fa"
 
 const CategoryDetails = ({ back }) => {
 	const { id } = useParams()
@@ -275,49 +277,57 @@ const CategoryDetails = ({ back }) => {
 						key={subcategory._id}
 						className="mb-4"
 					>
-						<h2 className="text-xl font-semibold mb-2">{subcategory.name}</h2>
-						<button
-							onClick={() => handleDeleteSubcategory(subcategory._id)}
-							className="text-red-500"
-						>
-							Delete Subcategory
-						</button>
-						<ul className="space-y-2 mt-2">
+						<div className="flex justify-between">
+							<h2 className="text-xl font-semibold mb-2">{subcategory.name}</h2>
+							<button
+								onClick={() => handleDeleteSubcategory(subcategory._id)}
+								className="text-red-500"
+							>
+								Delete Subcategory
+							</button>
+						</div>
+						<div className="space-y-2 mt-2">
 							{subcategory.products && subcategory.products.length > 0 ? (
 								subcategory.products.map((product) => (
-									<li
+									<div
 										key={product._id}
-										className="flex justify-between items-center bg-gray-100 p-2 rounded"
-										style={{ backgroundColor: product.bg }}
+										className="max-w-[900px] grid grid-cols-[1fr_2fr_1fr_1fr]  justify-between items-center bg-gray-100 p-2 rounded"
+										// style={{ backgroundColor: product.bg }}
 									>
-										<div className="flex items-center">
-											<img
-												src={product.img}
-												alt={product.name}
-												className="w-16 h-16 object-cover rounded"
-											/>
-											<span className="ml-4">{product.name}</span>
-										</div>
-										<div className="space-x-2">
-											{/* <button
+										{/* <div className=" grid grid-cols-[0.5fr_1fr_2fr_1fr_0.5fr]  items-center"> */}
+										<img
+											src={product.img}
+											alt={product.name}
+											className="w-16 h-16 object-cover rounded"
+										/>
+										<span className="ml-4">{product.name}</span>
+										<input
+											type="color"
+											value={product.color}
+										/>
+										{/* </div> */}
+										{/* <div className="space-x-2"> */}
+										<div className="flex gap-10 items-end justify-center">
+											<button
 												onClick={() => handleEditProduct(product._id)}
-												className="text-blue-500"
+												className="text-blue-500 text-2xl"
 											>
-												Edit
-											</button> */}
+												<FaRegEdit />
+											</button>
 											<button
 												onClick={() => handleDeleteProduct(product._id)}
-												className="text-red-500"
+												className="text-red-500 text-2xl"
 											>
-												Delete
+												<AiOutlineDelete />
 											</button>
 										</div>
-									</li>
+										{/* </div> */}
+									</div>
 								))
 							) : (
 								<li>No products found</li>
 							)}
-						</ul>
+						</div>
 					</div>
 				))
 			) : (
