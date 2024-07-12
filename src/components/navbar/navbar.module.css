@@ -1,0 +1,28 @@
+/* Navbar.module.css */
+
+.navbar {
+  width: 100%;
+  border-bottom: 2px solid #4b5563;
+  /* border-gray-800 */
+  padding-left: 1.25rem;
+  /* 5px */
+  padding-right: 1.25rem;
+  /* 5px */
+  padding-top: 1rem;
+  /* 4px */
+  padding-bottom: 1rem;
+  /* 4px */
+  font-size: 1.125rem;
+  /* text-lg */
+}
+
+@media (min-width: 640px) {
+
+  /* sm breakpoint */
+  .navbar {
+    padding-left: 3rem;
+    /* 12px */
+    padding-right: 3rem;
+    /* 12px */
+  }
+}

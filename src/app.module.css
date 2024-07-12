@@ -1,0 +1,32 @@
+/* App.module.css */
+
+.appContainer {
+  display: flex;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  height: 100vh;
+  overflow-y: scroll;
+  background-color: #f3fff7;
+}
+
+.innerContent {
+  padding-top: 2rem;
+  /* 8px */
+  padding-left: 1.25rem;
+  /* 5px */
+}
+
+@media (min-width: 640px) {
+
+  /* sm breakpoint */
+  .innerContent {
+    padding-top: 3rem;
+    /* 12px */
+    padding-left: 3rem;
+    /* 12px */
+  }
+}
