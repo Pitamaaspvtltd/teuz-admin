@@ -24,7 +24,7 @@ const Sidebar = () => {
 						className="w-5"
 						alt=""
 					/>
-					<p className="hidden sm:block">Add Product</p>
+					<p className="hidden sm:block">Add Categories</p>
 				</NavLink>
 				<NavLink
 					to={"/list-song"}
@@ -35,7 +35,7 @@ const Sidebar = () => {
 						className="w-5"
 						alt=""
 					/>
-					<p className="hidden sm:block">Add SubCategory</p>
+					<p className="hidden sm:block">Add Product</p>
 				</NavLink>
 				<NavLink
 					to={"/add-album"}
