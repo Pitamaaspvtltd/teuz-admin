@@ -8,10 +8,12 @@ import { domainurl } from "../../App"
 const Login = ({ setAuthenticated, url }) => {
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
+	const [loading, setLoading] = useState(false)
 	const navigate = useNavigate()
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
+		setLoading(true)
 		try {
 			const response = await axios.post(`${domainurl}/api/users/login`, {
 				email,
@@ -29,6 +31,8 @@ const Login = ({ setAuthenticated, url }) => {
 		} catch (error) {
 			console.error("Error logging in:", error)
 			// toast.error("Error logging in. Please try again.")
+		} finally {
+			setLoading(false) // Set loading to false after the login attempt
 		}
 	}
 
@@ -60,51 +64,12 @@ const Login = ({ setAuthenticated, url }) => {
 						className="sign"
 						type="submit"
 					>
-						Sign in
+						{loading ? "Loading..." : "Sign in"}
 					</button>
 				</form>
-				{/* <div className="social-message">
-				<div className="line"></div>
-				<p className="message">Login with social accounts</p>
-				<div className="line"></div>
-			</div>
-
-			<p className="signup">
-				Don't have an account?
-				<a
-					rel="noopener noreferrer"
-					href="#"
-					className=""
-				>
-					Sign up
-				</a>
-			</p> */}
 			</div>
 		</div>
 	)
-
-	// <div>
-	// 	<h2>Login</h2>
-	// 	<form onSubmit={handleSubmit}>
-	// 		<div>
-	// 			<label>Email: </label>
-	// 			<input
-	// 				type="email"
-	// 				value={email}
-	// 				onChange={(e) => setEmail(e.target.value)}
-	// 			/>
-	// 		</div>
-	// 		<div>
-	// 			<label>Password: </label>
-	// 			<input
-	// 				type="password"
-	// 				value={password}
-	// 				onChange={(e) => setPassword(e.target.value)}
-	// 			/>
-	// 		</div>
-	// 		<button type="submit">Login</button>
-	// 	</form>
-	// </div>
 }
 
 export default Login

@@ -85,15 +85,17 @@ const CategoryList = () => {
 	const [categories, setCategories] = useState([])
 	const [editingCategoryId, setEditingCategoryId] = useState(null)
 	const [editingCategoryName, setEditingCategoryName] = useState("")
-
+	const [loading, setLoading] = useState(true)
 	useEffect(() => {
 		axios
 			.get(`${domainurl}/api/categories`)
 			.then((response) => {
 				setCategories(response.data.categories)
+				setLoading(false)
 			})
 			.catch((error) => {
-				toast.error(error.message)
+				console.log(error.message)
+				setLoading(false)
 			})
 	}, [])
 
@@ -106,7 +108,7 @@ const CategoryList = () => {
 					setCategories(categories.filter((category) => category._id !== id))
 				})
 				.catch((error) => {
-					toast.error(error.message)
+					console.log(error.message)
 				})
 		}
 	}
@@ -138,12 +140,21 @@ const CategoryList = () => {
 			})
 	}
 	const navigate = useNavigate()
+	if (loading) {
+		// Render spinner while loading
+		return (
+			<div className="grid place-items-center min-h-[80vh]">
+				<div className="w-16  h-16 place-self-center border-4 border-gray-400 border-t-green-800 rounded-full animate-spin"></div>
+			</div>
+		)
+	}
 
 	return (
 		<div className="container mx-auto p-4">
 			<ToastContainer />
 
 			<h1 className="text-2xl font-bold mb-4">Categories</h1>
+
 			<ul className="space-y-2 max-w-[800px]">
 				{categories.map((category) => (
 					<li
