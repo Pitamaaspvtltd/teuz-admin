@@ -357,7 +357,7 @@ const ProductUpdate = () => {
 			toast.success("Product updated successfully")
 			navigate(`/category/${response.data.product.category}`)
 		} catch (error) {
-			toast.error(error.response?.data?.message || error.message)
+			toast.error("Fill all categories")
 		}
 	}
 
