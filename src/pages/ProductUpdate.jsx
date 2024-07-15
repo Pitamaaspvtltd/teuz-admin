@@ -305,7 +305,7 @@ const ProductUpdate = () => {
 	useEffect(() => {
 		if (product.category) {
 			axios
-				.get(`http://localhost:5000/api/products/category/${product.category}`)
+				.get(`${domainurl}/api/products/category/${product.category}`)
 				.then((response) => {
 					setSubcategories(response.data.subcategories)
 				})
@@ -326,7 +326,7 @@ const ProductUpdate = () => {
 			setProduct((prevProduct) => ({ ...prevProduct, [name]: value }))
 			if (name === "category") {
 				axios
-					.get(`http://localhost:5000/api/products/category/${value}`)
+					.get(`${domainurl}/api/products/category/${value}`)
 					.then((response) => {
 						setSubcategories(response.data.subcategories)
 						setProduct((prevProduct) => ({ ...prevProduct, subcategory: "" }))
@@ -346,7 +346,7 @@ const ProductUpdate = () => {
 		})
 		try {
 			const response = await axios.put(
-				`http://localhost:5000/api/products/${id}`,
+				`${domainurl}/api/products/${id}`,
 				formData,
 				{
 					headers: {
