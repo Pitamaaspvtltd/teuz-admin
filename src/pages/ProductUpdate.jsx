@@ -3,6 +3,7 @@
 // import axios from "axios"
 // import { toast } from "react-toastify"
 // import "react-toastify/dist/ReactToastify.css"
+// import { domainurl } from "../App"
 
 // const ProductUpdate = () => {
 // 	const { id } = useParams()
@@ -24,8 +25,8 @@
 // 		const fetchData = async () => {
 // 			try {
 // 				const [productRes, categoriesRes] = await Promise.all([
-// 					axios.get(`http://localhost:5000/api/products/${id}`),
-// 					axios.get("http://localhost:5000/api/categories"),
+// 					axios.get(`${domainurl}/api/products/${id}`),
+// 					axios.get(`${domainurl}/api/categories`),
 // 				])
 // 				setProduct({
 // 					...productRes.data,
@@ -45,13 +46,15 @@
 // 	useEffect(() => {
 // 		if (product.category) {
 // 			axios
-// 				.get(`http://localhost:5000/api/products/category/${product.category}`)
+// 				.get(`${domainurl}/api/products/category/${product.category._id}`)
 // 				.then((response) => {
 // 					setSubcategories(response.data.subcategories)
+// 					console.log(response.data.subcategories)
 // 				})
-// 				.catch((error) => toast.error("Error fetching subcategories"))
+// 				.catch((error) => console.log("Error fetching subcategories"))
 // 		}
 // 	}, [product.category])
+// 	console.log("subcategories", subcategories)
 
 // 	const handleChange = (e) => {
 // 		const { name, value, files } = e.target
@@ -66,7 +69,7 @@
 // 			setProduct((prevProduct) => ({ ...prevProduct, [name]: value }))
 // 			if (name === "category") {
 // 				axios
-// 					.get(`http://localhost:5000/api/products/category/${value}`)
+// 					.get(`${domainurl}/api/products/category/${value}`)
 // 					.then((response) => {
 // 						setSubcategories(response.data.subcategories)
 // 						setProduct((prevProduct) => ({ ...prevProduct, subcategory: "" }))
@@ -86,7 +89,7 @@
 // 		})
 // 		try {
 // 			const response = await axios.put(
-// 				`http://localhost:5000/api/products/${id}`,
+// 				`${domainurl}/api/products/${id}`,
 // 				formData,
 // 				{
 // 					headers: {
@@ -97,7 +100,7 @@
 // 			toast.success("Product updated successfully")
 // 			navigate(`/category/${response.data.product.category}`)
 // 		} catch (error) {
-// 			toast.error(error.response?.data?.message || error.message)
+// 			toast.error("Fill all categories")
 // 		}
 // 	}
 
@@ -193,14 +196,18 @@
 // 						className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 // 					>
 // 						<option value="">Select a subcategory</option>
-// 						{subcategories.map((subcategory) => (
-// 							<option
-// 								key={subcategory._id}
-// 								value={subcategory._id}
-// 							>
-// 								{subcategory.name}
-// 							</option>
-// 						))}
+// 						{subcategories.length > 0 ? (
+// 							subcategories.map((subcategory) => (
+// 								<option
+// 									key={subcategory._id}
+// 									value={subcategory._id}
+// 								>
+// 									{subcategory.name}
+// 								</option>
+// 							))
+// 						) : (
+// 							<option disabled>No subcategories available</option>
+// 						)}
 // 					</select>
 // 				</div>
 // 				<div className="mb-4">
@@ -289,6 +296,8 @@ const ProductUpdate = () => {
 				])
 				setProduct({
 					...productRes.data,
+					category: productRes.data.category._id,
+					subcategory: productRes.data.subcategory._id,
 					img: null,
 				})
 				setImagePreview(productRes.data.img)
@@ -308,6 +317,7 @@ const ProductUpdate = () => {
 				.get(`${domainurl}/api/products/category/${product.category}`)
 				.then((response) => {
 					setSubcategories(response.data.subcategories)
+					console.log(response.data.subcategories)
 				})
 				.catch((error) => console.log("Error fetching subcategories"))
 		}
@@ -357,7 +367,7 @@ const ProductUpdate = () => {
 			toast.success("Product updated successfully")
 			navigate(`/category/${response.data.product.category}`)
 		} catch (error) {
-			toast.error("Fill all categories")
+			toast.error(error.message)
 		}
 	}
 

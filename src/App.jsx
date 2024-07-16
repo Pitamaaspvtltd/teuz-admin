@@ -43,68 +43,66 @@ const App = () => {
 	}
 
 	return (
-		<ErrorBoundary>
-			<AuthProvider>
-				<div className="flex items-start min-h-screen">
-					<ToastContainer />
-					{authenticated && <Sidebar />}
-					<div className="flex-1 h-screen overflow-y-scroll bg-[#f3fff7]">
-						{authenticated && <Navbar />}
-						<div className="pt-8 pl-5 sm:pt-12 sm:pl-12">
-							<Suspense fallback={<LoadingSpinner />}>
-								<Routes>
-									<Route
-										path="/login"
-										element={<Login setAuthenticated={setAuthenticated} />}
-									/>
-									{/* <Route
+		// <ErrorBoundary>
+		<AuthProvider>
+			<div className="flex items-start min-h-screen">
+				<ToastContainer />
+				{authenticated && <Sidebar />}
+				<div className="flex-1 h-screen overflow-y-scroll bg-[#f3fff7]">
+					{authenticated && <Navbar />}
+					<div className="pt-8 pl-5 sm:pt-12 sm:pl-12">
+						<Suspense fallback={<LoadingSpinner />}>
+							<Routes>
+								<Route
+									path="/login"
+									element={<Login setAuthenticated={setAuthenticated} />}
+								/>
+								{/* <Route
 									path="/register"
 									element={<Register />}
 								/> */}
-									<Route
-										path="/add-song"
-										element={<PrivateRoute element={<AddSong />} />}
-									/>
-									<Route
-										path="/list-song"
-										element={<PrivateRoute element={<AddProducts />} />}
-									/>
-									<Route
-										path="/"
-										element={<PrivateRoute element={<CategoryList />} />}
-									/>
-									<Route
-										path="/category/:id"
-										element={
-											<PrivateRoute
-												element={<CategoryDetails back={goBack} />}
-											/>
-										}
-									/>
-									<Route
-										path="/product/update/:id"
-										element={<PrivateRoute element={<ProductUpdate />} />}
-									/>{" "}
-									<Route
-										path="/all-product"
-										element={<PrivateRoute element={<ProductList />} />}
-									/>
-									<Route
-										path="/"
-										element={
-											<Navigate
-												to={authenticated ? "/" : "/login"}
-												replace={true}
-											/>
-										}
-									/>{" "}
-								</Routes>
-							</Suspense>
-						</div>
+								<Route
+									path="/add-song"
+									element={<PrivateRoute element={<AddSong />} />}
+								/>
+								<Route
+									path="/list-song"
+									element={<PrivateRoute element={<AddProducts />} />}
+								/>
+								<Route
+									path="/"
+									element={<PrivateRoute element={<CategoryList />} />}
+								/>
+								<Route
+									path="/category/:id"
+									element={
+										<PrivateRoute element={<CategoryDetails back={goBack} />} />
+									}
+								/>
+								<Route
+									path="/product/update/:id"
+									element={<PrivateRoute element={<ProductUpdate />} />}
+								/>{" "}
+								<Route
+									path="/all-product"
+									element={<PrivateRoute element={<ProductList />} />}
+								/>
+								<Route
+									path="/"
+									element={
+										<Navigate
+											to={authenticated ? "/" : "/login"}
+											replace={true}
+										/>
+									}
+								/>{" "}
+							</Routes>
+						</Suspense>
 					</div>
 				</div>
-			</AuthProvider>
-		</ErrorBoundary>
+			</div>
+		</AuthProvider>
+		// </ErrorBoundary>
 	)
 }
 
