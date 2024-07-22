@@ -152,9 +152,15 @@ const CategoryList = () => {
 	return (
 		<div className="container mx-auto p-4">
 			<ToastContainer />
-
-			<h1 className="text-2xl font-bold mb-4">Categories</h1>
-
+			<div className="flex justify-between  max-w-[800px] mb-10">
+				<h1 className="text-2xl font-bold mb-4">Categories</h1>
+				<button
+					onClick={() => navigate("/add-categories")}
+					className="text-md font-bold border-2 border-black bg-black px-4 text-white"
+				>
+					Add Categories
+				</button>
+			</div>
 			<ul className="space-y-2 max-w-[800px]">
 				{categories.map((category) => (
 					<li

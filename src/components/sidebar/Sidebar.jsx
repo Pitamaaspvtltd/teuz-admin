@@ -16,7 +16,7 @@ const Sidebar = () => {
 			/>
 			<div className="flex flex-col gap-5 mt-10">
 				<NavLink
-					to={"/add-song"}
+					to={"/categories"}
 					className="flex items-center gap-2.5 text-gray-800 bg-white border border-black p-2 pr-[max(8vw,10px)] drop-shadow-[-4px_4px_#00ff58] text-sm font-medium"
 				>
 					<img
@@ -24,7 +24,7 @@ const Sidebar = () => {
 						className="w-5"
 						alt=""
 					/>
-					<p className="hidden sm:block">Add Category</p>
+					<p className="hidden sm:block">All Category</p>
 				</NavLink>
 				<NavLink
 					to={"/list-song"}

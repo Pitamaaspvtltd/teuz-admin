@@ -150,7 +150,7 @@ const AddProducts = () => {
 						className="block text-gray-700 text-sm font-bold mb-2"
 						htmlFor="bg"
 					>
-						Background Color
+						Shoe Color
 					</label>
 					<input
 						type="text"
@@ -165,7 +165,7 @@ const AddProducts = () => {
 						className="block text-gray-700 text-sm font-bold mb-2"
 						htmlFor="color"
 					>
-						Color
+						Background Color
 					</label>
 					<input
 						type="color"

@@ -14,6 +14,7 @@ import ProductUpdate from "./pages/ProductUpdate.jsx"
 import Login from "./components/Login/Login.jsx"
 import ErrorBoundary from "./components/ErrorBoundary.jsx"
 import ProductList from "./pages/ProductList.jsx"
+import Dashboard from "./pages/Dashboard.jsx"
 
 const CategoryList = lazy(() => import("./pages/CategoryList"))
 const CategoryDetails = lazy(() => import("./pages/CategoryDetails"))
@@ -57,21 +58,21 @@ const App = () => {
 									path="/login"
 									element={<Login setAuthenticated={setAuthenticated} />}
 								/>
-								{/* <Route
-									path="/register"
-									element={<Register />}
-								/> */}
 								<Route
-									path="/add-song"
-									element={<PrivateRoute element={<AddSong />} />}
+									path="/"
+									element={<Dashboard />}
+								/>
+								<Route
+									path="/categories"
+									element={<PrivateRoute element={<CategoryList />} />}
 								/>
 								<Route
 									path="/list-song"
 									element={<PrivateRoute element={<AddProducts />} />}
 								/>
 								<Route
-									path="/"
-									element={<PrivateRoute element={<CategoryList />} />}
+									path="/add-categories"
+									element={<PrivateRoute element={<AddSong />} />}
 								/>
 								<Route
 									path="/category/:id"
