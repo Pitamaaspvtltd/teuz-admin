@@ -23,7 +23,7 @@ const Login = ({ setAuthenticated, url }) => {
 				// Save token to localStorage
 				localStorage.setItem("token", response.data.token)
 				setAuthenticated(true)
-				navigate("/")
+				navigate("/dashboard")
 				// toast.success("Login successful!")
 			} else {
 				// toast.error("Invalid credentials")
