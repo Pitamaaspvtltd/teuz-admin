@@ -72,7 +72,7 @@ const Navbar = ({ setAuthenticated }) => {
 		<div className="navbar w-full flex justify-between border-b-2 border-gray-800 px-5 sm:px-12 py-4 text-lg">
 			<p
 				className="cursor-pointer"
-				onClick={() => navigate("/")}
+				onClick={() => navigate("/dashboard")}
 			>
 				HOME
 			</p>
